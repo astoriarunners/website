@@ -1832,3 +1832,20 @@ width: 100%;
   width: 100%;
   height: 1rem;
 }
+
+/* Calendar */
+
+.fc-daygrid-event{
+  display: block;
+  padding-left: 10px;
+}
+.fc-daygrid-event {
+  white-space: normal;
+  align-items: normal;
+}
+.fc-daygrid-event-dot{
+  display: inline-flex;
+  position: absolute;
+  left: -3.5px;
+  top: 6px;
+}
