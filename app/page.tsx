@@ -1,14 +1,30 @@
-import dynamic from "next/dynamic";
+'use client';
+
 import Header from "@/app/header";
 import Footer from "@/app/footer";
 import { Interval, IntervalThumb, Weekly, WeeklyThumb } from "@/images";
 import '@/styles/style.css';
 import '@/styles/fancybox.css';
 import { RunArticle } from "./components/runArticle";
+import { MonthArticle } from "./models/article";
 import Hero from "./components/hero";
-
+import ARCalendar from "@/app/components/calendar/arCalendar";
+import { getMonthContent } from "./contentAPI";
+import { useState, useEffect } from "react";
 export default function Home() {
-  const Calendar = dynamic(() => import('./components/calendar/calendarData').then(c => c.CalendarData), {ssr: false});
+
+  const [monthArticle, setMonthArticle] = useState<MonthArticle>({blurb: "", month: ""});
+
+  async function fetchMonthArticle() {
+    const tempMonthArticle = await getMonthContent();
+    setMonthArticle(tempMonthArticle);
+  }
+
+  useEffect( () => {
+    if(monthArticle.blurb == "" && monthArticle.month == "")
+      fetchMonthArticle();
+    }
+  );
 
   return (
     <>
@@ -17,11 +33,9 @@ export default function Home() {
           <Hero/>
           <section id="schedule">
           <div className="article">
-              <h1>Run with us this September</h1>
-              <p>September ‘24 September is here! We’re embracing summer with a beach trip 🏖️ 😎 See you there! Note the change in days for intervals and long runs.
-                #astoriarunners
-              </p>
-              <Calendar/>
+              <h1>Run with us this {monthArticle.month}</h1>
+              <p>{monthArticle.blurb}</p>
+              <ARCalendar/>
           </div>
 
             <div className="container article">

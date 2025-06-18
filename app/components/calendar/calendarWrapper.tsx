@@ -15,7 +15,7 @@ interface RunningEvent{
   date: Date
 }
 
-export default function CalendarClient(props: CalendarProps) {
+export default function CalendarWrapper(props: CalendarProps) {
 
   const calendarEvents: EventSourceInput = props.runningEvents.map( event => {
       return {
