@@ -1,17 +1,11 @@
-const baseUrl = "https://brave-cheese-79f7c9b3cb.strapiapp.com/api/meetup";
+import { RunningEvent } from "./models/runningEvent";
 
-export async function getMeetupRSSFeed(){
-    const rssResponse= await fetch(`${baseUrl}/rss/`);
-    if (!rssResponse.ok)
-        throw new Error("Error: " + rssResponse.status);
-    const rssData = await rssResponse.text();
-    return rssData;
-}
+const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
-export async function getDateFromMeetupEvent(eventId: number){
-    const pageResponse = await fetch(`${baseUrl}/event/?eventId=${eventId}`);
-    if (!pageResponse.ok)
-        throw new Error("Error: " + pageResponse.status);
-    const pageData = await pageResponse.text();
-    return pageData;
+export async function getMeetupEvents(): Promise<RunningEvent[]>{
+    const meetupResponse= await fetch(`${baseUrl}/meetup/rss/`);
+    if (!meetupResponse.ok)
+        throw new Error("Error: " + meetupResponse.status);
+    const meetupEvents: RunningEvent[] = await meetupResponse.json();
+    return meetupEvents;
 }
