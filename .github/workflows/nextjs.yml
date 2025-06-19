@@ -53,6 +53,10 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Add Environment Variables
+        env:
+          NEXT_PUBLIC_ADMIN_API_URL: ${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }}
+        run: echo "Environment variables configured."
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
