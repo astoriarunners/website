@@ -1,6 +1,6 @@
 import { MonthArticle } from "./models/article";
 
-const baseUrl = "https://brave-cheese-79f7c9b3cb.strapiapp.com/api";
+const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL ?? "https://brave-cheese-79f7c9b3cb.strapiapp.com/api";
 
 export async function getMonthContent(){
     const rawResponse= await fetch(`${baseUrl}/month-articles/`);
