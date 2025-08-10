@@ -57,6 +57,11 @@ jobs:
         env:
           NEXT_PUBLIC_ADMIN_API_URL: ${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }}
         run: echo "Environment variables configured."
+      - name: Put values in .env file
+        id: secret-check
+        run: |
+          touch .env
+          echo NEXT_PUBLIC_ADMIN_API_URL=${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }} >> .env
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -93,5 +98,6 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
+        if: ${{ !env.ACT }}
         id: deployment
         uses: actions/deploy-pages@v4
