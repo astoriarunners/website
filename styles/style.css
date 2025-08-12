@@ -1073,7 +1073,7 @@ footer {
 #copyright {
   flex: 1 0 130px;
   margin: 10px 15px;
-  font-size: .8rem;
+  /* font-size: 1.2rem; */
 }
 #back-top {
   flex: 1 0 110px;
