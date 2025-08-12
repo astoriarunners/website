@@ -6,3 +6,5 @@ export * as IntervalThumb from '@/images/interval-thumb.png';
 export * as Interval from '@/images/interval.png';
 export * as WeeklyThumb from '@/images/weekly-thumb.png';
 export * as Weekly from '@/images/weekly.png';
+export * as PartyPace from "@/images/party-pace.jpg";
+export * as RooseveltIsland from "@/images/roosevelt-island.jpg";

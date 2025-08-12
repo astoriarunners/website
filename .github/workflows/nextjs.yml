@@ -53,21 +53,6 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Add Environment Variables
-        env:
-          NEXT_PUBLIC_ADMIN_API_URL: ${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }}
-        run: echo "Environment variables configured."
-      - name: Put values in .env file
-        id: secret-check
-        run: |
-          touch .env
-          echo NEXT_PUBLIC_ADMIN_API_URL=${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }} >> .env
-          ls -a
-      - name: Load .env file
-        uses: natterstefan/action-next-env@v1
-        with:
-          path: custom/path/to/folder/with/env # optional, default: .
-          environment: development
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -88,6 +73,22 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Add Environment Variables
+        env:
+          NEXT_PUBLIC_ADMIN_API_URL: ${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }}
+        run: echo "Environment variables configured."
+      - name: Put values in .env file
+        id: secret-check
+        run: |
+          touch .env
+          echo NEXT_PUBLIC_ADMIN_API_URL=${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }} >> .env
+          ls -a
+          cat .env
+          echo ${{secrets.NEXT_PUBLIC_ADMIN_API_URL }} | sed 's/./& /g'
+      - name: Load .env file
+        uses: natterstefan/action-next-env@v1
+        with:
+          environment: development
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact

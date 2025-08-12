@@ -2,7 +2,7 @@
 
 import Header from "@/app/header";
 import Footer from "@/app/footer";
-import { Interval, IntervalThumb, Weekly, WeeklyThumb } from "@/images";
+import { Interval, IntervalThumb, PartyPace, RooseveltIsland, Weekly, WeeklyThumb } from "@/images";
 import '@/styles/style.css';
 import '@/styles/fancybox.css';
 import { RunArticle } from "./components/runArticle";
@@ -45,6 +45,12 @@ export default function Home() {
 
                 <RunArticle title="Interval Track Run" image={Interval.default} imageThumb={IntervalThumb.default}
                 description="Join us for a 45-minute interval run at the Astoria Park track. We meet afterwards in the corner of the inner field to chat. (Feel free to join us and run however you want)"/>
+
+                <RunArticle title="Weekend Long Run" image={RooseveltIsland.default} imageThumb={RooseveltIsland.default}
+                description="Join us for our longer runs on the weekend! We mix up the route every weekend and explore nearby neighborhoods"/>
+                
+                <RunArticle title="Party Pace Walk/Run" image={PartyPace.default} imageThumb={PartyPace.default}
+                description="Want to run with a group but not confident you'll find a comfortable pace? No problem! Join us for a fun walk/ run around the track! We're here to make sure everyone feels welcome getting into running!"/>
 
             </div>{ /*end fourteenforty container */ }
 

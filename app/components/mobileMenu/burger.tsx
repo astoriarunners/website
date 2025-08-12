@@ -6,7 +6,6 @@ import { useRef } from "react";
 
 export default function Burger(){
 
-    console.log("Burger load");
     const burgerRef = useRef(null);
 
     function toggleBurger(){
