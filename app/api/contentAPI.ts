@@ -1,4 +1,4 @@
-import { MonthArticle } from "./models/article";
+import { MonthArticle } from "../models/article";
 
 
 export async function getMonthContent(){

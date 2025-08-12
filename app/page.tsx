@@ -9,7 +9,7 @@ import { RunArticle } from "./components/runArticle";
 import { MonthArticle } from "./models/article";
 import Hero from "./components/hero";
 import ARCalendar from "@/app/components/calendar/arCalendar";
-import { getMonthContent } from "./contentAPI";
+import { getMonthContent } from "./api/contentAPI";
 import { useState, useEffect } from "react";
 export default function Home() {
 

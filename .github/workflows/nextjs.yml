@@ -84,7 +84,6 @@ jobs:
           echo NEXT_PUBLIC_ADMIN_API_URL=${{ secrets.NEXT_PUBLIC_ADMIN_API_URL }} >> .env
           ls -a
           cat .env
-          echo ${{secrets.NEXT_PUBLIC_ADMIN_API_URL }} | sed 's/./& /g'
       - name: Load .env file
         uses: natterstefan/action-next-env@v1
         with:

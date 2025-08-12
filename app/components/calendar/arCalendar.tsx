@@ -1,6 +1,6 @@
 'use client';
 
-import { getMeetupEvents } from "@/app/meetupAPI";
+import { getMeetupEvents } from "@/app/api/meetupAPI";
 import CalendarWrapper from "@/app/components/calendar/calendarWrapper";
 import { useState, useEffect } from "react";
 import { RunningEvent } from "@/app/models/runningEvent";
