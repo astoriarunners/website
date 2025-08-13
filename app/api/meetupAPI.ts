@@ -1,4 +1,4 @@
-import { RunningEvent } from "../models/runningEvent";
+import { RunningEvent } from "@/app/models/runningEvent";
 
 export async function getMeetupEvents(): Promise<RunningEvent[]>{
     const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;

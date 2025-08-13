@@ -1,13 +1,19 @@
-import { MonthArticle } from "../models/article";
+import { MonthArticle } from "@/app/models/monthArticle";
 
 
-export async function getMonthContent(){
+export async function getMonthContent(): Promise<MonthArticle|null>{
     const baseUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
-    const rawResponse= await fetch(`${baseUrl}/month-articles/`);
+    const today = new Date();
+    const monthIndex = today.getMonth() + 1; // Months in JS are 0 indexed for some reason
+
+    const rawResponse= await fetch(`${baseUrl}/month-articles/?filters[monthIndex][$eq]=${monthIndex}`);
     if (!rawResponse.ok)
         throw new Error("Error: " + rawResponse.status);
     const resData = await rawResponse.json();
-    //TODO: Fetch only needed articles
-    const blurb = resData["data"].filter((ele: MonthArticle) => ele.id && ele.month === "June")[0];
-    return blurb;
+
+    const data: MonthArticle[] = resData["data"];
+    if (!data)
+        return null;
+
+    return data[0];
 }

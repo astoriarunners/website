@@ -1,5 +1,6 @@
 export interface MonthArticle {
-    month: string
+    monthName: string
+    monthId: number
     blurb: string
     id?: number
 }

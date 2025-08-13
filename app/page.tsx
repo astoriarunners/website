@@ -5,23 +5,34 @@ import Footer from "@/app/footer";
 import { Interval, IntervalThumb, PartyPace, RooseveltIsland, Weekly, WeeklyThumb } from "@/images";
 import '@/styles/style.css';
 import '@/styles/fancybox.css';
-import { RunArticle } from "./components/runArticle";
-import { MonthArticle } from "./models/article";
-import Hero from "./components/hero";
+import { RunArticle } from "@/app/components/runArticle";
+import { MonthArticle } from "@/app/models/monthArticle";
+import Hero from "@/app/components/hero";
 import ARCalendar from "@/app/components/calendar/arCalendar";
-import { getMonthContent } from "./api/contentAPI";
+import { getMonthContent } from "@/app/api/contentAPI";
 import { useState, useEffect } from "react";
+
+
+//TODO: Review copy for what we want the default text to be
+const DEFAULT_BLURB = "Run with us this month! We have weekly Wednesday evening 5ks and brewery runs the 2nd Wednesday and last Thursday of the month";
+const DEFAULT_MONTH_ID = -1;
+
 export default function Home() {
 
-  const [monthArticle, setMonthArticle] = useState<MonthArticle>({blurb: "", month: ""});
+  const [monthArticle, setMonthArticle] = useState<MonthArticle>({
+    blurb: DEFAULT_BLURB,
+    monthName: "Month",
+    monthId: DEFAULT_MONTH_ID
+  });
 
   async function fetchMonthArticle() {
-    const tempMonthArticle = await getMonthContent();
-    setMonthArticle(tempMonthArticle);
+    const maybeMonthArticle: MonthArticle|null = await getMonthContent();
+    if (maybeMonthArticle)
+      setMonthArticle(maybeMonthArticle);
   }
 
   useEffect( () => {
-    if(monthArticle.blurb == "" && monthArticle.month == "")
+    if(monthArticle.monthId === DEFAULT_MONTH_ID)
       fetchMonthArticle();
     }
   );
@@ -33,7 +44,7 @@ export default function Home() {
           <Hero/>
           <section id="schedule">
           <div className="article">
-              <h1>Run with us this {monthArticle.month}</h1>
+              <h1>Run with us this {monthArticle.monthName}</h1>
               <p>{monthArticle.blurb}</p>
               <ARCalendar/>
           </div>

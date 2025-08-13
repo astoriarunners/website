@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import useFancyBox from "../hooks/fancybox";
+import useFancyBox from "@/app/hooks/fancybox";
 
 interface RunArticleProps{
     title: string,
