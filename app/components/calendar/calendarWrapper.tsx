@@ -13,8 +13,9 @@ interface CalendarProps{
 export default function CalendarWrapper(props: CalendarProps) {
 
   const calendarEvents: EventSourceInput = props.runningEvents.map( event => {
+      //Need to decode html components, will add as they show up in titles
       return {
-        title: event.title,
+        title: event.title.replaceAll("&amp;", "&").replaceAll("&#x27;", "'"),
         start: new Date(Date.parse(event.dateStr)).toISOString(),
         url: event.link
     }
