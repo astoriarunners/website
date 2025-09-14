@@ -1,23 +1,26 @@
 import Link from "next/link";
-import { faRunning } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NYRR, Strava } from "@/images";
 
 export default function Footer(){
-    const year = new Date().getFullYear();
     return (
         <>
             <div className="footer-space">&nbsp;</div>
             <footer>
                 <span>
-                    <a href="https://www.nyrr.org/getinvolved/club/astoria-runners" title="NYRR">
-                        <FontAwesomeIcon icon={faRunning} size="2x"/>
-                    </a>
-                    <a href="https://www.instagram.com/astoria_runners/" title="Instagram">
+                    <Link className="logo" href="https://www.strava.com/clubs/198723">
+                        <Image src={Strava} width={0} height={0} alt="" style={{"width": "50px"}}/>
+                    </Link>
+                    <Link className="logo" href="https://www.nyrr.org/getinvolved/club/astoria-runners">
+                        <Image src={NYRR} width={0} height={0} alt="" style={{"width": "50px"}}/>
+                    </Link>
+                    <Link href="https://www.instagram.com/astoria_runners/">
                         <FontAwesomeIcon icon={faInstagram} size="2x"/>
-                    </a>
+                    </Link>
                 </span>
-                <span id="copyright">&copy;Astoria Runners {year}</span>
+                <span id="copyright">&copy;Astoria Runners</span>
                 <Link id="back-top" href="/#top">
                     Back to Top
                 </Link>
