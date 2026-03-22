@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "format": "prettier --write"
   },
   "dependencies": {
     "@fancyapps/ui": "^6.0.22",
@@ -17,19 +18,23 @@
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
-    "next": "^14.2.14",
+    "next": "^16.1.6",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.34.2"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^9.39.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.5",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.1",

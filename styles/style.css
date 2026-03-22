@@ -594,8 +594,8 @@ section {
   background-size: cover;
   padding: 0;
   position: relative;
-  padding-top: 60px; /* For anchor linking */
-  margin-top: -60px;
+  padding-top: 30px; /* For anchor linking */
+  margin-top: -30px;
 }
 #presentation section {
   width: 100%;
@@ -1848,4 +1848,91 @@ width: 100%;
   position: absolute;
   left: -3.5px;
   top: 6px;
+}
+
+/* Banner */
+.banner {
+  margin: 0 auto 20px;
+  display: block;
+  padding: 14px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: var(--ar-grape);
+  /* background-image: url($bg-image); */
+  
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.banner .banner-title {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 600;
+  font-style: italic;
+  text-transform: uppercase;
+  color: white;
+}
+
+.banner .banner-desc {
+  margin: 10px 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: white;
+}
+
+.banner-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 2px;
+  background: var(--ar-grape-dark);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  z-index: 1000;
+}
+
+.banner-btn:hover {
+  background: var(--ar-pink);
+}
+
+
+/*
+ * Wide Button
+ */
+.banner-wide {
+  background-repeat: no-repeat;
+  background-position: right;  padding: 0;
+  
+  .banner-body {
+    padding: 14px;
+  }
+  
+  .banner-desc {
+    margin-bottom: 0;
+  }
+  
+  .banner-btn {
+    display: block;
+    padding: 20px 14px;
+  }
+}
+
+@media (min-width: 600px) {
+  .banner-wide {
+  width: 725px;
+  background-repeat: no-repeat;
+  background-position: right;    padding: 0;
+    
+    .banner-body {
+      padding: 14px;
+    }
+    
+    .banner-btn {
+      padding: 10px 14px;
+    }
+  }
 }

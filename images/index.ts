@@ -10,3 +10,4 @@ export * as RooseveltIsland from "@/images/roosevelt-island.jpg";
 export * as Strava from "@/images/strava-seeklogo.svg";
 export * as WeeklyThumb from '@/images/weekly-thumb.png';
 export * as Weekly from '@/images/weekly.png';
+export * as ShoreRoadGradient from '@/images/shore-road-gradient.png';

@@ -4,10 +4,10 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { EventSourceInput, FormatterInput } from '@fullcalendar/core/index.js';
 import "@/styles/fc.css";
-import { RunningEvent } from '@/app/models/runningEvent';
+import { RunningArticle } from '@/app/models/runningArticle';
 
 interface CalendarProps{
-  runningEvents: RunningEvent[]
+  runningEvents: RunningArticle[]
 }
 
 export default function CalendarWrapper(props: CalendarProps) {

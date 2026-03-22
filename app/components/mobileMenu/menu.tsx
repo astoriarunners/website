@@ -1,4 +1,4 @@
-import ARLogo from "/images/ar-logo.svg";
+import ARLogo from "@/images/ar-logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import Burger from "@/app/components/mobileMenu/burger";

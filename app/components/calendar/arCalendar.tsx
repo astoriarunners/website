@@ -3,11 +3,11 @@
 import { getMeetupEvents } from "@/app/api/meetupAPI";
 import CalendarWrapper from "@/app/components/calendar/calendarWrapper";
 import { useState, useEffect } from "react";
-import { RunningEvent } from "@/app/models/runningEvent";
+import { RunningArticle } from "@/app/models/runningArticle";
 
 export default function ARCalendar(){
 
-    const [runningEvents, setRunningEvents] = useState<RunningEvent[]>([]);
+    const [runningEvents, setRunningEvents] = useState<RunningArticle[]>([]);
     const [shouldFetchRunningEvents, setShouldFetchRunningEvents] = useState<boolean>(true);
 
     async function fetchRunningEvents() {
@@ -15,6 +15,7 @@ export default function ARCalendar(){
             const meetupResponse = await getMeetupEvents();
             setRunningEvents(meetupResponse);
         } catch(e){
+            console.log(e);
             setShouldFetchRunningEvents(false);
         }
     }

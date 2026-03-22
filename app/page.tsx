@@ -7,11 +7,13 @@ import '@/styles/style.css';
 import '@/styles/fancybox.css';
 import { RunArticle } from "@/app/components/runArticle";
 import { MonthArticle } from "@/app/models/monthArticle";
+import { EventArticle } from "@/app/models/eventArticle";
 import Hero from "@/app/components/hero";
 import ARCalendar from "@/app/components/calendar/arCalendar";
 import { getMonthContent } from "@/app/api/contentAPI";
 import { useState, useEffect } from "react";
-
+import SpecialEvent from "@/app/components/banner/specialEvent";
+import { getSpecialEvent } from "@/app/api/eventAPI";
 
 //TODO: Review copy for what we want the default text to be
 const DEFAULT_BLURB = "Run with us this month! We have weekly Wednesday evening 5ks and brewery runs the 2nd Wednesday and last Thursday of the month";
@@ -24,6 +26,7 @@ export default function Home() {
     monthName: "Month",
     monthId: DEFAULT_MONTH_ID
   });
+  const [specialEvent, setSpecialEvent] = useState<EventArticle|null>(null);
 
   async function fetchMonthArticle() {
     const maybeMonthArticle: MonthArticle|null = await getMonthContent();
@@ -31,25 +34,31 @@ export default function Home() {
       setMonthArticle(maybeMonthArticle);
   }
 
+  async function fetchSpecialEvent(){
+    const maybeSpecialEvent: EventArticle|null = await getSpecialEvent();
+    if(maybeSpecialEvent)
+      setSpecialEvent(maybeSpecialEvent);
+  }
+
   useEffect( () => {
-    if(monthArticle.monthId === DEFAULT_MONTH_ID)
-      fetchMonthArticle();
-    }
-  );
+    fetchMonthArticle();
+    fetchSpecialEvent();
+  }, []);
 
   return (
     <>
         <Header/>
         <main className="page-content">
           <Hero/>
+          {specialEvent != null && <SpecialEvent eventName={specialEvent.eventName} eventDescription={specialEvent.eventDescription} eventLink={specialEvent.eventLink}/>}
           <section id="schedule">
-          <div className="article">
+          <section className="article">
               <h1>Run with us this {monthArticle.monthName}</h1>
               <p>{monthArticle.blurb}</p>
               <ARCalendar/>
-          </div>
+          </section>
 
-            <div className="container article">
+            <section className="container article">
 
                 <RunArticle title="Weekly Evening Run" image={Weekly.default} imageThumb={WeeklyThumb.default} 
                 description="Join us for a 5k run that starts and finishes at Astoria Park track. We have 3 pace groups and stop halfway to rest and socialize before heading back to the park."/>
@@ -63,7 +72,7 @@ export default function Home() {
                 <RunArticle title="Party Pace Walk/Run" image={PartyPace.default} imageThumb={PartyPace.default}
                 description="Want to run with a group but not confident you'll find a comfortable pace? No problem! Join us for a fun walk/ run around the track! We're here to make sure everyone feels welcome getting into running!"/>
 
-            </div>{ /*end fourteenforty container */ }
+            </section>{ /*end fourteenforty container */ }
 
           </section> { /* End Schedule */ }
 

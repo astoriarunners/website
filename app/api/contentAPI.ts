@@ -15,6 +15,7 @@ export async function getMonthContent(): Promise<MonthArticle|null>{
             return null;
         return data[0];
     } catch(err){
+        console.log(err);
         return null;
     }
 }
