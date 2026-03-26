@@ -1884,15 +1884,7 @@ width: 100%;
 }
 
 .banner-btn {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 2px;
-  background: var(--ar-grape-dark);
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: white;
-  z-index: 1000;
+  margin: 1rem;
 }
 
 .banner-btn:hover {
@@ -1905,7 +1897,10 @@ width: 100%;
  */
 .banner-wide {
   background-repeat: no-repeat;
-  background-position: right;  padding: 0;
+  background-position: right;
+  border-radius: 13rem;
+  overflow: clip;
+  padding: 5rem;
   
   .banner-body {
     padding: 14px;
@@ -1913,11 +1908,6 @@ width: 100%;
   
   .banner-desc {
     margin-bottom: 0;
-  }
-  
-  .banner-btn {
-    display: block;
-    padding: 20px 14px;
   }
 }
 
