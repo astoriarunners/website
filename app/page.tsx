@@ -45,12 +45,22 @@ export default function Home() {
     fetchSpecialEvent();
   }, []);
 
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let specialEventDate: Date|null;
+  if( !specialEvent )
+    specialEventDate = null;
+  else {
+    specialEventDate = new Date(`${specialEvent.eventDate}T16:00:00Z`);
+  }
+
   return (
     <>
         <Header/>
         <main className="page-content">
           <Hero/>
-          {specialEvent != null && <SpecialEvent eventName={specialEvent.eventName} eventDescription={specialEvent.eventDescription} eventLink={specialEvent.eventLink}/>}
+          {specialEvent != null && specialEventDate != null && specialEventDate.getTime() >= today.getTime()
+            && <SpecialEvent eventName={specialEvent.eventName} eventDescription={specialEvent.eventDescription} eventLink={specialEvent.eventLink} eventDate={specialEvent.eventDate}/>}
           <section id="schedule">
           <section className="article">
               <h1>Run with us this {monthArticle.monthName}</h1>

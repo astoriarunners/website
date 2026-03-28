@@ -12,7 +12,7 @@ export async function getSpecialEvent(): Promise<EventArticle|null>{
         const eventData: EventArticle[] = eventResponse["data"];
         return eventData[0];
     } catch(err) {
-        console.debug("No special event found")
+        console.debug("No special event found: " + err);
         return null;
     }
 }
